@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snacks Square Admin</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:40px;
+}
+
+input,select,button{
+padding:10px;
+margin:5px;
+}
+
+.product{
+border:1px solid #ccc;
+padding:10px;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Admin Panel</h1>
+
+<h2>Add Category</h2>
+
+<input id="categoryName" placeholder="Category name">
+
+<button onclick="addCategory()">Add Category</button>
+
+<hr>
+
+<h2>Add Product</h2>
+
+<input id="productName" placeholder="Product name">
+
+<input id="price" placeholder="Price">
+
+<select id="categorySelect"></select>
+
+<input type="file" id="productImage">
+
+<button onclick="addProduct()">Add Product</button>
+
+<hr>
+
+<h2>Product List</h2>
+
+<div id="productList"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/scripts/admin.js"></script>
+
+</body>
+</html>
