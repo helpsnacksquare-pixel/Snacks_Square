@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Snacks Square Test</title>
+</head>
+
+<body>
+
+<h2>Snacks Square</h2>
+
+<button onclick="placeOrder()">Add Fake Order</button>
+
+<p id="result"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+const supabaseUrl = "https://gljlxmdsulypkvzxstzh.supabase.co";
+
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsamx4bWRzdWx5cGt2enhzdHpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4MTQwMjAsImV4cCI6MjA4ODM5MDAyMH0.a2tk1uOsIIsuh_zLWsqeYV1F8HY0k-6q5BlXEev0a6M";
+
+// correct way
+const { createClient } = supabase;
+
+const db = createClient(supabaseUrl, supabaseKey);
+
+async function placeOrder() {
+
+  const { data, error } = await db
+    .from("orders")
+    .insert([
+      {
+        customer_name: "Test User",
+        phone_number: "9999999999",
+        items: [{name:"Fruit Salad", qty:1}],
+        order_status: {status:"pending"}
+      }
+    ]);
+
+  if(error){
+    document.getElementById("result").innerText = "Insert failed ❌";
+    console.log(error);
+  }else{
+    document.getElementById("result").innerText = "Order added ✅";
+    console.log(data);
+  }
+
+}
+
+</script>
+
+</body>
+</html>
